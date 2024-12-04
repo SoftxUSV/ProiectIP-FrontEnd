@@ -1,17 +1,18 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './Pages/LogInPage';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Button variant="contained" color="primary">
-        Hello Material-UI
-      </Button>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
-
-
 
 export default App;
