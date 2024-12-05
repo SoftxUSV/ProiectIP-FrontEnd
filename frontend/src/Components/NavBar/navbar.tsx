@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
               "&:hover": {
                 backgroundColor: "#ced3d7",
               },
-              border: "2px solid #00796b",
+              border: "2px solid black",
               borderRadius: "4px", 
             }}
           >
