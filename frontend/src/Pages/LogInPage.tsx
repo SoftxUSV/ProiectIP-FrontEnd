@@ -86,19 +86,6 @@ const LoginPage: React.FC = () => {
             LOGIN
           </Button>
         </Box>
-        <Typography variant="body2" mt={2} color="text.secondary">
-          Don’t have an account?{' '}
-          <Typography
-            component="span"
-            color="primary"
-            sx={{
-              cursor: 'pointer',
-              fontWeight: 'bold',
-            }}
-          >
-            Register
-          </Typography>
-        </Typography>
       </Box>
     </Box>
   );
