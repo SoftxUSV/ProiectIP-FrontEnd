@@ -20,10 +20,12 @@ const Navbar: React.FC = () => {
       anchor="left"
       sx={{
         width: 240,
+        position: "relative", 
         "& .MuiDrawer-paper": {
           width: 240,
           boxSizing: "border-box",
           backgroundColor: "#f5f5f5",
+          marginTop: '90px',  
         },
       }}
     >
@@ -36,22 +38,22 @@ const Navbar: React.FC = () => {
                 backgroundColor: "#ced3d7",
               },
               border: "2px solid black",
-              borderRadius: "4px", 
+              borderRadius: "4px",
             }}
           >
             <Link
               to={item.path}
               style={{
-                textDecoration: "none", 
-                display: "flex", 
-                width: "100%", 
+                textDecoration: "none",
+                display: "flex",
+                width: "100%",
               }}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText
                 primary={item.text}
                 sx={{
-                  color: item.textColor, // Set custom text color
+                  color: item.textColor,
                 }}
               />
             </Link>
