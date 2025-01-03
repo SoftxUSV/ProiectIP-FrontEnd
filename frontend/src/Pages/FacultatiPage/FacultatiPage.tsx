@@ -7,14 +7,17 @@ import {
   Menu,
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useNavigate } from 'react-router-dom'; // For navigation
 
 const FacultatiPage: React.FC = () => {
   const [selectedOption, setSelectedOption] = React.useState("");
-  const [selectedGrupa, setSelectedGrupa] = React.useState("");  // New state for Grupa
-  const [selectedMaterie, setSelectedMaterie] = React.useState("");  // New state for Materie
+  const [selectedGrupa, setSelectedGrupa] = React.useState("");
+  const [selectedMaterie, setSelectedMaterie] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [grupaAnchorEl, setGrupaAnchorEl] = React.useState<null | HTMLElement>(null); // New anchor for Grupa
-  const [materieAnchorEl, setMaterieAnchorEl] = React.useState<null | HTMLElement>(null); // New anchor for Materie
+  const [grupaAnchorEl, setGrupaAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [materieAnchorEl, setMaterieAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const navigate = useNavigate(); // Hook to navigate between pages
 
   // Facultati Dropdown functions
   const handleDropdownClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,8 +26,8 @@ const FacultatiPage: React.FC = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
-    setGrupaAnchorEl(null); // Close Grupa dropdown as well
-    setMaterieAnchorEl(null); // Close Materie dropdown as well
+    setGrupaAnchorEl(null);
+    setMaterieAnchorEl(null);
   };
 
   const handleSelect = (option: string) => {
@@ -52,6 +55,10 @@ const FacultatiPage: React.FC = () => {
     handleClose();
   };
 
+  const handleGoToCalendar = () => {
+    navigate('/calendar'); // Change '/calendar' to the route of your calendar page
+  };
+
   const facultyOptions = [
     "Facultatea de inginerie electrica si stiinta calculatoarelor",
     "Facultatea de Litere și Științe ale Comunicării",
@@ -60,8 +67,8 @@ const FacultatiPage: React.FC = () => {
     "Facultatea de Economie ,Administrație și Afaceri",
   ];
 
-  const grupaOptions = ["1", "2", "3"]; // Options for Grupa
-  const materieOptions = ["Matematica", "Fizica", "Informatica", "Chimie"]; // Options for Materie
+  const grupaOptions = ["1", "2", "3"];
+  const materieOptions = ["Matematica", "Fizica", "Informatica", "Chimie"];
 
   return (
     <Box
@@ -69,8 +76,8 @@ const FacultatiPage: React.FC = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', // This makes the container fill the whole viewport height
-        bgcolor: '#f0f0f0', // Optional: Add background color to the page
+        height: '100vh',
+        bgcolor: '#f0f0f0',
       }}
     >
       <Box
@@ -81,7 +88,7 @@ const FacultatiPage: React.FC = () => {
           borderRadius: '8px',
           padding: '16px',
           boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-          textAlign: 'center', // Center the text inside the box
+          textAlign: 'center',
         }}
       >
         <Typography
@@ -96,14 +103,13 @@ const FacultatiPage: React.FC = () => {
 
         <Button
           variant="contained"
-          endIcon={<ArrowDropDownIcon />}
           onClick={handleDropdownClick}
           sx={{
             bgcolor: '#003D7B',
             color: 'white',
             '&:hover': { bgcolor: '#0056a6' },
             width: '100%',
-            marginBottom: '16px', // Add some space between the dropdowns
+            marginBottom: '16px',
           }}
         >
           {selectedOption || 'Select an option'}
@@ -147,14 +153,13 @@ const FacultatiPage: React.FC = () => {
 
         <Button
           variant="contained"
-          endIcon={<ArrowDropDownIcon />}
           onClick={handleGrupaClick}
           sx={{
             bgcolor: '#003D7B',
             color: 'white',
             '&:hover': { bgcolor: '#0056a6' },
             width: '100%',
-            marginBottom: '16px', // Add some space between the dropdowns
+            marginBottom: '16px',
           }}
         >
           {selectedGrupa || 'Select a Grupa'}
@@ -198,13 +203,13 @@ const FacultatiPage: React.FC = () => {
 
         <Button
           variant="contained"
-          endIcon={<ArrowDropDownIcon />}
           onClick={handleMaterieClick}
           sx={{
             bgcolor: '#003D7B',
             color: 'white',
             '&:hover': { bgcolor: '#0056a6' },
             width: '100%',
+            marginBottom: '16px',
           }}
         >
           {selectedMaterie || 'Select a Materie'}
@@ -235,6 +240,21 @@ const FacultatiPage: React.FC = () => {
             </MenuItem>
           ))}
         </Menu>
+
+        {/* Add Go to Calendar button */}
+        <Button
+          variant="contained"
+          onClick={handleGoToCalendar}
+          sx={{
+            bgcolor: '#0056a6',
+            color: 'white',
+            '&:hover': { bgcolor: '#007bff' },
+            width: '100%',
+            marginTop: '16px', // Add spacing above the button
+          }}
+        >
+          Go to Calendar
+        </Button>
       </Box>
     </Box>
   );

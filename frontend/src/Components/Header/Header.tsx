@@ -1,32 +1,18 @@
 import React from 'react';
-import { Box, Avatar, Typography } from '@mui/material';
+import { Box, Avatar } from '@mui/material';
+import logo from '../../Images/LOGOIP.png'; // Adjust the path as necessary
+import './Header.css';
 
 const Header: React.FC = () => {
-    const logos = [
-        'https://via.placeholder.com/100x50.png?text=Logo1',
-        'https://via.placeholder.com/100x50.png?text=Logo2',
-        'https://via.placeholder.com/100x50.png?text=Logo3',
-    ];
-
-    const randomLogo = logos[Math.floor(Math.random() * logos.length)];
-
-    const userProfileImage = 'https://via.placeholder.com/40.png';
+    const userProfileImage = ''; // Add a valid user profile image path or URL if available
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                backgroundColor: '#003D7B',
-                color: 'white',
-                marginBottom: '10px',
-            }}
-        >
+        <Box className="header-container">
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <img
+                    src={logo}
                     alt="Logo"
-                    style={{ width: '100px', height: '80px' }}
+                    className="logo"
                 />
             </Box>
 

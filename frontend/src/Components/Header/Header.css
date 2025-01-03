@@ -1,0 +1,15 @@
+.logo {
+    width: auto;
+    height: 60px; /* Adjust height as needed */
+    max-width: 150px; /* Optional: prevent the logo from exceeding a certain width */
+    object-fit: contain; /* Ensures the image maintains aspect ratio and fits the container */
+    margin: 0 10px; /* Add some margin around the logo */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003D7B;
+    color: white;
+}

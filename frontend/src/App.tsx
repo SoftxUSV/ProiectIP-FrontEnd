@@ -14,14 +14,17 @@ function App() {
     const hideNavbarPaths = ["/", "/login"];
     return hideNavbarPaths.includes(location.pathname) ? null : <Navbar />;
   };
+  const HeaderWithVisibility = () => {
+    const location = useLocation();
+    const hideNavbarPaths = ["/", "/login"];
+    return hideNavbarPaths.includes(location.pathname) ? null : <Header/>;
+  };
 
   return (
     <BrowserRouter>
       <div className="App">
-        {/* Header at the top */}
-        <Header />
+        <HeaderWithVisibility/>
         
-        {/* Navbar below the header */}
         <NavbarWithVisibility />
         
         <Routes>
