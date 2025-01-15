@@ -6,7 +6,6 @@ import {
   Button,
   Menu,
 } from '@mui/material';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useNavigate } from 'react-router-dom'; // For navigation
 
 const FacultatiPage: React.FC = () => {
@@ -19,7 +18,6 @@ const FacultatiPage: React.FC = () => {
 
   const navigate = useNavigate(); // Hook to navigate between pages
 
-  // Facultati Dropdown functions
   const handleDropdownClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -35,7 +33,6 @@ const FacultatiPage: React.FC = () => {
     handleClose();
   };
 
-  // Grupa Dropdown functions
   const handleGrupaClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setGrupaAnchorEl(event.currentTarget);
   };
@@ -45,7 +42,6 @@ const FacultatiPage: React.FC = () => {
     handleClose();
   };
 
-  // Materie Dropdown functions
   const handleMaterieClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setMaterieAnchorEl(event.currentTarget);
   };
@@ -56,7 +52,7 @@ const FacultatiPage: React.FC = () => {
   };
 
   const handleGoToCalendar = () => {
-    navigate('/calendar'); // Change '/calendar' to the route of your calendar page
+    navigate('/calendar', { state: { facultati: selectedOption, grupa: selectedGrupa, materie: selectedMaterie } });
   };
 
   const facultyOptions = [
@@ -91,16 +87,9 @@ const FacultatiPage: React.FC = () => {
           textAlign: 'center',
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{
-            marginBottom: '16px',
-            fontWeight: 'bold',
-          }}
-        >
+        <Typography variant="h6" sx={{ marginBottom: '16px', fontWeight: 'bold' }}>
           Facultati
         </Typography>
-
         <Button
           variant="contained"
           onClick={handleDropdownClick}
@@ -114,7 +103,6 @@ const FacultatiPage: React.FC = () => {
         >
           {selectedOption || 'Select an option'}
         </Button>
-
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -140,17 +128,10 @@ const FacultatiPage: React.FC = () => {
             </MenuItem>
           ))}
         </Menu>
-
-        <Typography
-          variant="h6"
-          sx={{
-            marginBottom: '16px',
-            fontWeight: 'bold',
-          }}
-        >
+        {/* Repeat for Grupa and Materie with similar logic */}
+        <Typography variant="h6" sx={{ marginBottom: '16px', fontWeight: 'bold' }}>
           Grupa
         </Typography>
-
         <Button
           variant="contained"
           onClick={handleGrupaClick}
@@ -164,7 +145,6 @@ const FacultatiPage: React.FC = () => {
         >
           {selectedGrupa || 'Select a Grupa'}
         </Button>
-
         <Menu
           anchorEl={grupaAnchorEl}
           open={Boolean(grupaAnchorEl)}
@@ -190,17 +170,9 @@ const FacultatiPage: React.FC = () => {
             </MenuItem>
           ))}
         </Menu>
-
-        <Typography
-          variant="h6"
-          sx={{
-            marginBottom: '16px',
-            fontWeight: 'bold',
-          }}
-        >
+        <Typography variant="h6" sx={{ marginBottom: '16px', fontWeight: 'bold' }}>
           Materie
         </Typography>
-
         <Button
           variant="contained"
           onClick={handleMaterieClick}
@@ -214,7 +186,6 @@ const FacultatiPage: React.FC = () => {
         >
           {selectedMaterie || 'Select a Materie'}
         </Button>
-
         <Menu
           anchorEl={materieAnchorEl}
           open={Boolean(materieAnchorEl)}
@@ -240,8 +211,6 @@ const FacultatiPage: React.FC = () => {
             </MenuItem>
           ))}
         </Menu>
-
-        {/* Add Go to Calendar button */}
         <Button
           variant="contained"
           onClick={handleGoToCalendar}
